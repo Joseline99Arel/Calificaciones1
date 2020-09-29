@@ -1,0 +1,68 @@
+package Promedios;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main (String []args){
+    Scanner entrada = new Scanner (System.in);
+    
+    String[] Nombres = {"Acevedo Campos Ariagna","Ambrocio Perez Michael","Ambrosio Hernandez Vianey","Campos Casasanero Juan","Diaz De Jesus Mariana","Diaz Rosas Alexis","Dominguez Cazalez Jennifer","Eligio Ramos Monserrat","Flores Maldonado Liliana","Gomez Aragon Edgar","Gutierrez Valle Samara","Juarez Ramos Alexis","Leyva Silva Rogelio","Martinez de los Santos Isabel","Martinez Rayo Iris"};
+    int[] NoControl = {18680056,19680091,19680092,19680113,19680133,17680136,18680108,19680957,19680144,19680156,19680162,19680958,19680177,18680163,18680165};
+    double[] Calif = new double [15];
+    
+    System.out.println("Asignar calificaciones a alaumnos:");
+    for(int i=0;i<15;i++){
+        System.out.println((i+1)+" "+Nombres[i]+"  "+NoControl[i]);
+        Calif[i] = entrada.nextDouble();
+    }
+    
+    int a=1,Respuesta=0;
+    double Contador, Promedio=0;
+    while(a==1){
+        System.out.println("¿Que promedio deceas realizar?");
+        System.out.println("1.- Promedio de Toda la Clase");
+        System.out.println("2.- Promedio de los primeros 5 alumnos");
+        System.out.println("3.- Promedio de los ultimos 5 alumnos");
+        System.out.println("4.- Salir");
+        Respuesta=entrada.nextInt();
+            
+        if(Respuesta>0 && Respuesta<5){
+            switch(Respuesta){
+                case 1: 
+                    Contador=0;
+                    for(int i=0;i<15;i++){
+                       Contador+=Calif[i];
+                    }
+                    Promedio=Contador/15;
+                    System.out.println("Promedio: "+Promedio);
+                break;
+                case 2: 
+                    Contador=0;
+                    for(int i=0;i<5;i++){
+                       Contador+=Calif[i];
+                    }
+                    Promedio=Contador/5;
+                    System.out.println("Promedio: "+Promedio);
+                break;
+                case 3: 
+                    Contador=0;
+                    for(int i=10;i<15;i++){
+                       Contador+=Calif[i];
+                    }
+                    Promedio=Contador/5;
+                    System.out.println("Promedio: "+Promedio);
+                break;
+                case 4: 
+                    System.exit(0);
+                break; 
+            }
+            System.out.println("Quieres repetir el proceso 1:Si 2:No");
+            a=entrada.nextInt();
+            }
+            else
+            {
+                System.out.println("El numero que ingresaste esta fuera de las opciones ");
+            }
+        }     
+    }    
+}
